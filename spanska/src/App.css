@@ -1,0 +1,216 @@
+* {
+  box-sizing: border-box;
+}
+body, #root {
+  background-color: #299bff;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+h1 {
+  margin: 0.8rem 0 0;
+  text-align: center;
+}
+.game-container {
+  position: relative;
+  margin: auto;
+  height: 20rem;
+  width: 25rem;
+  top: -1rem;
+}
+.figure-container {
+  fill: transparent;
+  stroke: black;
+  stroke-width: 0.4rem;
+  stroke-linecap: round;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.figure-part {
+  display: none;
+}
+.wrong-letters-container {
+  top: 15rem;
+  margin: auto;
+  position: absolute;
+  display: flex;
+  right: 30%;
+  text-align: center;
+  flex-direction: column;
+  font-weight:550;
+  text-shadow: 1px 1px 10px rgba(255, 255, 255, 0.9);
+}
+.wrong-letters-container p {
+  margin: 0 0 0.2rem;
+  text-decoration: underline;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.wrong-letters-color  {
+  font-size: 1.7rem;
+  color: black;
+}
+.word {
+  display: flex;
+  position: absolute;
+  top: 11.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+.letter {
+  border-bottom: 4px solid black;
+  display: inline-flex;
+  font-size: 1.6rem;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0.2rem;
+  height: 1.85rem;
+  width: 1.5rem;
+}
+.popup-container {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  left: 0;
+  top: -20%;
+}
+.popup {
+  background: #299bff;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight:600;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+.popup button {
+  background-color: rgb(255, 255, 120);
+  color:black;
+  border: 0;
+  margin-bottom: 5px;
+  padding: 10px 20px;
+  font-size: 35px;
+  font-weight: 900;
+  border-radius: 1rem;
+  text-shadow: 5px 5px 10px rgba(41, 39, 20, 0.5);
+}
+.popup button:active {
+  transform: scale(0.95);
+}
+.popup button:focus {
+  outline: 0;
+}
+.notification-container {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 1rem 1rem;
+  position: absolute;
+  font-weight: 600;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  padding: 1.5rem;
+  font-size: 1.5rem;
+  box-sizing: content-box;
+  text-align: center;
+}
+.notification-container p {
+  margin: 0;
+}
+.notification-container.show {
+  transform: translate(-50%, -50%);
+}
+.huvudrubrik {
+  font-weight: 600;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+  text-align: center;
+}
+.word-to-guess{
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+  color: white;
+  text-align: center;
+  font-size:  0.7rem;
+}
+.word-to-guess span {
+  color: black;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.9);
+  text-decoration: underline;
+  font-size: 2rem;
+}
+.keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 95%;
+}
+.keyboard button {
+  background-color: #f4f4f4;
+  border:3px solid #ccc;
+  border-radius:0.3rem;
+  margin:  0.2rem;;
+  padding: 10px 15px;
+  font-size:  1.2rem;
+  font-weight: 600;
+}
+@media only screen and (max-width: 380px) {
+  .game-container {
+    width: 90%;
+    height: auto;
+  }
+  .figure-container {
+    bottom: 6rem;
+  }
+  .word {
+    top: -4rem;
+  }
+  .wrong-letters-container {
+    right: 10%;
+    top: -1.5rem;
+  }
+  .letter {
+    font-size: 1.25rem;
+    width: 1.5rem;
+    height: 2rem;
+  }
+  h1 {
+    font-size: 1.25rem;
+  }
+  .popup {
+    font-size: 0.87rem;
+    padding: 1.25rem;
+  }
+  .popup button {
+    font-size: 1.5rem;
+  }
+  .notification-container {
+    width: 80%;
+    padding: 1.5rem;
+    font-size: 1rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-sizing: content-box;
+    text-align: center;
+  } 
+  .keyboard {
+    position: absolute;
+    bottom: 0.5rem;
+    width: 95%;
+  }
+  .keyboard button {
+    border:0.2rem solid #8dc9fd;
+    border-radius: 0.3rem;
+    margin: 0.1rem;
+    padding: 0.6rem 0.6rem;
+    font-size: 0.8rem;
+  }
+}
