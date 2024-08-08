@@ -3,7 +3,7 @@ import React from 'react';
 const Figure = ({ wrongLetters }) => {
     const errors = wrongLetters.length;
     return (
-        <svg height="160" width="128" className="figure-container">
+        <svg height="160" width="128" viewBox="0 0 128 160" className="figure-container">
             {/* <!-- Rod --> */}
             <line x1="38" y1="13" x2="90" y2="13" />
             <line x1="90" y1="13" x2="90" y2="32" />

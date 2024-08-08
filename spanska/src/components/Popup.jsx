@@ -35,17 +35,15 @@ const Popup = ({ correctLetters, wrongLetters, selectedWord, setPlayable, playAg
         setPlayable(true);
         playAgain();
     };
-
-    const finalMessageRevealWord = `Det rätta ordet är: "${selectedWord.toUpperCase()}"`;
-
+ 
     return (
         <div>
             <h2 className='winstreak'>{winstreak}</h2>
             <div className="popup-container" style={finalMessage !== '' ? { display: 'flex' } : {}}>
                 <div className="popup">
                     <h2>{finalMessage}</h2>
-                    <h3>{finalMessageRevealWord}</h3>
-                    {finalMessage.includes('Inkorrekt') && (
+                    <h3>Det rätta ordet är: <span className="displayed-correct-word">{selectedWord.toUpperCase()}</span>
+                    </h3>{finalMessage.includes('Inkorrekt') && (
                         <p>Du vann totalt <span className="totaltsiffra">{sessionWins}</span> gånger innan du förlorade.</p>
                     )}
                     <button onClick={handlePlayAgain}>Spela igen</button>

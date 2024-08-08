@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import Header from './components/Header';
 import Figure from './components/Figure';
 import WrongLetters from './components/WrongLetters';
 import WordHandler from './components/WordHandler';
 import Popup from './components/Popup';
 import Notification from './components/Notification';
-import { showNotification as show, checkWin } from './helpers/helpers';
+import { showNotification as show } from './helpers/helpers';
 import WordFetcher from './components/WordFetcher';
+import Library from './components/Library';  
+import AllLibrary from './components/AllLibrary';
 import './App.css';
+import './Media.css';
 
 const words = WordFetcher();
 let selectedWordPair = words[Math.floor(Math.random() * words.length)];
@@ -17,6 +19,10 @@ function App() {
   const [correctLetters, setCorrectLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
   const [showNotification, setShowNotification] = useState(false);
+  const [clueUsed, setClueUsed] = useState(false);
+  const [seen, setSeen] = useState([]);
+  const [isLibraryOpen, setIsLibraryOpen] = useState(false); 
+  const [isAllWordsOpen, setIsAllWordsOpen] = useState(false); 
 
   const processLetter = (letter) => {
     if (selectedWordPair.spanish.includes(letter)) {
@@ -34,9 +40,24 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    const currentWordPair = `${selectedWordPair.swedish.replace(/^(.)/, (match) => match.toUpperCase())} - ${selectedWordPair.spanish.replace(/^(.)/, (match) => match.toUpperCase())}`;
+    setSeen([currentWordPair]); 
+  }, []);  
+
   const handleButtonClick = (letter) => {
     if (playable) {
       processLetter(letter.toLowerCase());
+    }
+  };
+
+  const clueLetter = () => {
+    if (!clueUsed) {
+      const firstUnrevealedLetter = selectedWordPair.spanish.split('').find(letter => !correctLetters.includes(letter));
+      if (firstUnrevealedLetter) {
+        setCorrectLetters(currentLetters => [...currentLetters, firstUnrevealedLetter]);
+      }
+      setClueUsed(true);
     }
   };
 
@@ -44,23 +65,35 @@ function App() {
     setPlayable(true);
     setCorrectLetters([]);
     setWrongLetters([]);
+    setClueUsed(false);
 
     const random = Math.floor(Math.random() * words.length);
     selectedWordPair = words[random];
+
+    const newWordPair = `${selectedWordPair.swedish.replace(/^(.)/, (match) => match.toUpperCase())} - ${selectedWordPair.spanish.replace(/^(.)/, (match) => match.toUpperCase())}`;
+    setSeen(currentSeen => {
+      if (!currentSeen.includes(newWordPair)) {
+        return [...currentSeen, newWordPair];
+      }
+      return currentSeen;
+    });
   }
 
   const alphabet = 'abcdefghijklmnñopqrstuvwxyz'.split('');
 
+  const sortedWords = [...words].sort((a, b) => a.swedish.localeCompare(b.swedish));
   return (
     <>
-      <Header />
+      <h1 className="huvudrubrik">Hänga Gubbe / El ahorcado</h1>
       <div className="word-to-guess">
-        <h2> Gissa det spanska ordet för:<br/><span>{selectedWordPair.swedish.toUpperCase()}</span></h2>
+      <h2> Gissa det spanska ordet för:<br/><span>{selectedWordPair.swedish.toUpperCase()}</span></h2>
       </div>
+      <button className="brain" onClick={() => setIsLibraryOpen(true)}>{seen.length-1}</button>
+      <button className="book" onClick={() => setIsAllWordsOpen(true)}>{words.length}</button>
       <div className="game-container">
         <Figure wrongLetters={wrongLetters} />
         <WrongLetters wrongLetters={wrongLetters} />
-        <WordHandler selectedWord={selectedWordPair.spanish} correctLetters={correctLetters} />
+        <WordHandler selectedWord={selectedWordPair.spanish} correctLetters={correctLetters} clueLetter={clueLetter} />
       </div>
       <div className="keyboard">
         {alphabet.map(letter => (
@@ -69,6 +102,8 @@ function App() {
       </div>
       <Popup correctLetters={correctLetters} wrongLetters={wrongLetters} selectedWord={selectedWordPair.spanish} setPlayable={setPlayable} playAgain={playAgain} />
       <Notification showNotification={showNotification} />
+      <AllLibrary showAllWords={isAllWordsOpen} allWords={sortedWords} closeModal={() => setIsAllWordsOpen(false)} />
+      <Library showLibrary={isLibraryOpen} seenWords={seen} closeModal={() => setIsLibraryOpen(false)} />
     </>
   );
 }
