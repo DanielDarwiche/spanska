@@ -9,7 +9,7 @@ const Library = ({ showLibrary, seenWords, closeModal }) => {
                 <h2>Dina ord</h2>
                 {wordsToShow.length === 0 ? (  
                     <p style={{ fontSize: '2rem' }}>
-      När du har klarat ett så kan du se det här..
+      När du har klarat ett ord så kan du se det här..
     </p>
                 ) : (
                     <ul>

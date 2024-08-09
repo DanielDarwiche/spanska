@@ -25,26 +25,25 @@
   }
 /* Media queries */
 /* Liten skärm */
-  @media only screen and (max-width: 400px)
-  , (max-height: 750px){
+@media only screen and (max-width: 400px), only screen and (max-height: 750px) {
     .game-container {
       width: 90%;
       height: auto;
       top: 1.2rem;
     }
     .figure-container {
-      bottom: 6rem;
+      bottom: 6.5rem;
     }
     .word {
-      top: -4rem;
+      top: -5.5rem;
     }
     .wrong-letters-container {
       right: 10%;
-      top: -1.5rem;
+      top: -3rem;
     }
     .letter {
-      font-size: 1.8rem;
-      width: 1.2rem;
+      font-size: 1.5rem;
+      width: 1rem;
       height: 2rem;
     }
     h1 {
@@ -79,10 +78,15 @@
     }
   }
   /* Stor skärm */
-  @media only screen and (min-width: 750px) {
-      .letter {
-        width: 3rem;
-        height: 2rem;
+  @media (min-height: 650) and (min-width: 400px) 
+  {
+    .displayed-correct-word{
+      font-size: 3rem;
+      }
+    .letter {
+      font-size: 1.8rem;
+        width: 1rem;
+        height: 1.8rem;
       }
       .keyboard {
           bottom: 0.5rem;
@@ -130,8 +134,7 @@
   }
 
   /* EXTRA Stor skärm */
-  @media only screen and (min-width: 1000px)
-  {
+  @media only screen and (min-width: 700px) and (min-height: 900px) {
     .notification-container {
     font-weight: 600;
     padding: 3rem;
@@ -163,14 +166,16 @@
     .clue{
         width: 5.5rem;
         height: 5.5rem;
+        top:8%;
+    right: 8%;
       }
       .brain{
         top: 32%;
         right:8%;
         width: 5.5rem;
         height: 5.5rem;
-        font-size: 2.5rem;
-       }
+        font-size: 2.5rem; 
+      }
       .book{
         top: 44%;
         right:8%;
@@ -230,5 +235,7 @@
         height: 210px;
         top: -4rem;
       }
-
+      .displayed-correct-word{
+        font-size: 3rem;
+        }
 }

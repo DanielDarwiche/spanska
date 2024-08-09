@@ -10,7 +10,8 @@ import Library from './components/Library';
 import AllLibrary from './components/AllLibrary';
 import './App.css';
 import './Media.css';
-
+// npm run dev
+// npm run build
 const words = WordFetcher();
 let selectedWordPair = words[Math.floor(Math.random() * words.length)];
 

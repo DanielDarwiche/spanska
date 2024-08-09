@@ -34,6 +34,8 @@ const WordFetcher = () => {
     
     // vardagsord
     { spanish: 'adios', swedish: 'adjö' },
+    { spanish: 'llave', swedish: 'nyckel' },
+    { spanish: 'puerta', swedish: 'dörr' },
     { spanish: 'cerveza', swedish: 'öl' },
     { spanish: 'vino', swedish: 'vin' },
     { spanish: 'hola', swedish: 'hej' },
@@ -136,6 +138,10 @@ const WordFetcher = () => {
 
     // Övriga ord
     { spanish: 'bosque', swedish: 'skog' },
+    { spanish: 'higo', swedish: 'fikon' },
+    { spanish: 'coliflor', swedish: 'blomkål' },
+    { spanish: 'brocoli', swedish: 'broccoli' },
+    { spanish: 'papaya', swedish: 'papaya' },
     { spanish: 'pais', swedish: 'land' },
     { spanish: 'rio', swedish: 'flod' },
     { spanish: 'mujer', swedish: 'kvinna' },
@@ -176,6 +182,19 @@ const WordFetcher = () => {
 
     //Överkurs ;)
     { spanish: 'frijoles', swedish: 'bönor' },
+    { spanish: 'aguila', swedish: 'örn' },
+    { spanish: 'movil', swedish: 'mobil' },
+    { spanish: 'familia', swedish: 'familj' },
+    { spanish: 'gallina', swedish: 'höna' },
+    { spanish: 'pollo', swedish: 'kyckling' },
+    { spanish: 'pato', swedish: 'anka' },
+    { spanish: 'poto', swedish: 'rumpa' },
+    { spanish: 'hermano', swedish: 'broder' },
+    { spanish: 'hermana', swedish: 'syster' },
+    { spanish: 'fruta', swedish: 'frukt' },
+    { spanish: 'jarabe', swedish: 'sirap' },
+    { spanish: 'verdura', swedish: 'grönsak' },
+    { spanish: 'cacahuete', swedish: 'jordnöt' },
     { spanish: 'arroz', swedish: 'ris' },
     { spanish: 'especias', swedish: 'kryddor' },
     { spanish: 'lentejas', swedish: 'matlinser' },
@@ -194,12 +213,11 @@ const WordFetcher = () => {
     { spanish: 'pimentón', swedish: 'paprikapulver' },
     { spanish: 'oregano', swedish: 'oregano' },
     { spanish: 'albahaca', swedish: 'basilika' },
-    { spanish: 'azucar', swedish: 'socker' }
-
-
-
-
-
+    { spanish: 'azucar', swedish: 'socker' },
+    { spanish: 'gallo', swedish: 'tupp' },
+    { spanish: 'primo', swedish: 'kusin' },
+    { spanish: 'ojo', swedish: 'öga' },
+    { spanish: 'labios', swedish: 'läppar' }
   ];
   return words;
 };
